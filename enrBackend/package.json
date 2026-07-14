@@ -1,0 +1,15 @@
+{
+  "name": "enrbackend",
+  "version": "1.0.0",
+  "description": "Eni&Rem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zaid",
+  "license": "ISC",
+  "keywords": [
+    "Eni&Rem",
+    "Boutique"
+  ]
+}
