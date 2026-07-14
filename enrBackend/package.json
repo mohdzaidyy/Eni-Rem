@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "Eni&Rem",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nomdemon src/index.js"
   },
   "author": "Zaid",
   "license": "ISC",
   "keywords": [
     "Eni&Rem",
     "Boutique"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
