@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new Schema(
   {
@@ -17,7 +17,8 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true, // store bcrypt hash, never plaintext
+      required: true,
+      select: false, // never returned by default in queries
     },
     role: {
       type: String,
@@ -29,7 +30,21 @@ const userSchema = new Schema(
       trim: true,
     },
   },
-  { timestamps: true } // adds createdAt, updatedAt
+  { timestamps: true }
 );
 
-module.exports = mongoose.model('User', userSchema);
+// hash the password automatically whenever it's set/changed
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+
+// instance method used by the login controller
+userSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
+export default User;

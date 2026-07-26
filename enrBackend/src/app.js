@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from  "cookie-parser"
+import authRoutes from './routes/authRoute.js';
 
 const app = express()
 
@@ -14,4 +15,8 @@ app.use(express.urlencoded({
     limit: "16kb"
 }))
 app.use(express.static("public"))
-app.use(cookirParser())
+app.use(cookieParser())
+
+app.use('/api/auth', authRoutes);
+
+export default app
