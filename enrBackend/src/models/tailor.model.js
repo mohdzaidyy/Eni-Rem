@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
 
 const tailorSchema = new Schema(
   {
@@ -21,4 +20,5 @@ const tailorSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Tailor', tailorSchema);
+const Tailor = mongoose.model('Tailor', tailorSchema);
+export default Tailor;

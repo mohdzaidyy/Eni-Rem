@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
 
 const measurementSchema = new Schema(
   {
@@ -10,11 +9,9 @@ const measurementSchema = new Schema(
     },
     categoryId: {
       type: Schema.Types.ObjectId,
-      ref: 'MeasurementCategory', // e.g. Kameez, Shalwar, Frock, Gharara, Lehnga
+      ref: 'MeasurementCategory',
       required: true,
     },
-    // flexible key -> value map, shape driven entirely by the category's `fields`
-    // e.g. { chest: 38, shoulder: 17, sleeveLength: 24 }
     values: {
       type: Map,
       of: Number,
@@ -32,4 +29,5 @@ const measurementSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Measurement', measurementSchema);
+const Measurement = mongoose.model('Measurement', measurementSchema);
+export default Measurement;

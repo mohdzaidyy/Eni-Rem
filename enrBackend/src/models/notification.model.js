@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
 
 const notificationSchema = new Schema(
   {
@@ -8,7 +7,6 @@ const notificationSchema = new Schema(
       enum: ['TodayDelivery', 'TomorrowDelivery', 'PendingPayment', 'LateOrder', 'BirthdayCustomer'],
       required: true,
     },
-    // recipient can be a Customer or a User (tailor/owner) depending on `type`
     recipientId: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -35,4 +33,5 @@ const notificationSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Notification', notificationSchema);
+const Notification = mongoose.model('Notification', notificationSchema);
+export default Notification;

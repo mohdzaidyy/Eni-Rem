@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
 
 const orderSchema = new Schema(
   {
@@ -14,7 +13,7 @@ const orderSchema = new Schema(
     },
     measurementId: {
       type: Schema.Types.ObjectId,
-      ref: 'Measurement', // snapshot used for this specific order
+      ref: 'Measurement',
     },
     orderType: {
       type: String,
@@ -45,7 +44,15 @@ const orderSchema = new Schema(
       type: String,
       trim: true,
     },
+    modifications: {
+      type: String,
+      trim: true,
+    },
     fabricType: {
+      type: String,
+      trim: true,
+    },
+    fabricImage: {
       type: String,
       trim: true,
     },
@@ -67,8 +74,6 @@ const orderSchema = new Schema(
       default: function () {
         return this.totalPrice - this.advancePaid;
       },
-      // keep this in sync in the order/payment service whenever
-      // a new Payment doc is created against this order
     },
     deliveredAt: {
       type: Date,
@@ -77,4 +82,5 @@ const orderSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
+export default Order;

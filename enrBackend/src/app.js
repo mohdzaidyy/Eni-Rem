@@ -2,14 +2,14 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 
-import authRoutes from './routes/authRoutes.js';
+import authRoutes from './routes/auth.routes.js';
 import customerRoutes from './routes/customer.routes.js';
 import tailorRoutes from './routes/tailor.routes.js';
 import orderRoutes from './routes/order.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
 import invoiceRoutes from './routes/invoice.routes.js';
-import measurementCategoryRoutes from './routes/measurementCategory.routes.js';
-import measurementRoutes from './routes/measurement.routes.js';
+import measurementCategoryRoutes from './routes/measurmentCategory.routes.js';
+import measurementRoutes from './routes/measurment.routes.js';
 import expenseRoutes from './routes/expense.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
