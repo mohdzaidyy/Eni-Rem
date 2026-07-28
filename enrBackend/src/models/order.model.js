@@ -52,9 +52,13 @@ const orderSchema = new Schema(
       type: String,
       trim: true,
     },
-    fabricImage: {
-      type: String,
-      trim: true,
+    fabricImages: {
+      type: [String], // array of /uploads/<filename> paths
+      default: [],
+    },
+    inspirationImages: {
+      type: [String], // array of /uploads/<filename> paths
+      default: [],
     },
     orderStatus: {
       type: String,

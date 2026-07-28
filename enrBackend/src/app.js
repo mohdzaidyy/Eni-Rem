@@ -13,6 +13,7 @@ import measurementRoutes from './routes/measurment.routes.js';
 import expenseRoutes from './routes/expense.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
+import uploadRoutes from './routes/upload.routes.js';
 
 const app = express()
 
@@ -39,5 +40,6 @@ app.use('/api/measurements', measurementRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/uploads', uploadRoutes);
 
 export default app
